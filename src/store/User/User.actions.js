@@ -1,13 +1,13 @@
-export function login({ username, password }) {
+export function doLogin({ username, password }) {
   return {
     type: 'LOGIN',
     payload: { username, password },
   };
 }
 
-export function logoff() {
+export function doLogoff() {
   return {
-    type: 'LOGIN',
-    payload: {},
+    type: 'LOGOFF',
+    payload: null,
   };
 }

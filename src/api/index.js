@@ -5,8 +5,8 @@ const axios = Axios.create({
 });
 
 const auth = ({ username, password }) => {
-  if (username === 'admin' && password === 'admin123') {
-    return { username, password: '********' };
+  if (username === 'admin' && password === '#4dm1n123') {
+    return { username, password };
   }
   return;
 };

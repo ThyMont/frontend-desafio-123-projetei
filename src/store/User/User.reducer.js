@@ -1,17 +1,20 @@
-export default function userReducer(state = false, action) {
-  switch (action) {
+import { defineState } from 'redux-localstore';
+
+const defaultState = false;
+
+const initialState = defineState(defaultState)('user');
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default function (state = initialState, action) {
+  switch (action.type) {
     case 'LOGIN': {
       const { username, password } = action.payload;
-      const localUser = sessionStorage.getItem('app-token');
-      if (localUser) return true;
-      if (username === 'admin' && password === 'admin123') {
-        sessionStorage.setItem('app-token', { username, password });
+      if (username === 'admin' && password === '#4dm1n123') {
         return true;
       }
-      return false;
+      return state;
     }
     case 'LOGOFF': {
-      sessionStorage.clear();
       return false;
     }
     default:

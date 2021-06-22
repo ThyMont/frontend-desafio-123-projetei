@@ -2,12 +2,21 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { auth } from '../api';
 import { history } from '../history';
+import { doLogin } from '../store/User/User.actions';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user);
+  const initialFormState = { username: '', password: '' };
   const handleSubmit = (values) => {
+    if (loggedIn) {
+      alert('Usuário já logado. Faça o Logoff');
+      return;
+    }
     const user = auth(values);
     if (user) {
-      localStorage.setItem('app-token', user);
+      dispatch(doLogin(user));
       history.push('/');
     } else {
       alert('Login Inválido');
@@ -26,7 +35,7 @@ export default function Login() {
         Login
       </h1>
       <Formik
-        initialValues={{}}
+        initialValues={initialFormState}
         onSubmit={handleSubmit}
         validationSchema={validations}
       >
@@ -77,10 +86,10 @@ export default function Login() {
           </div>
           <div className="text-gray-300 text-xs">
             <p>
-              <strong>User: </strong>admin@admin.com
+              <strong>User: </strong>admin
             </p>
             <p>
-              <strong>Password: </strong>admin123
+              <strong>Password: </strong>#4dm1n123
             </p>
           </div>
         </Form>
