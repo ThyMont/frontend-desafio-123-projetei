@@ -1,7 +1,11 @@
 import { Route, Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
+
 export default function PrivateRoute({ component, ...props }) {
-  const loggedIn = !!localStorage.getItem('app-token');
-  console.log(props);
+  const loggedIn = useSelector((state) => state.user);
+
+  //const loggedIn = !!localStorage.getItem('app-token');
+
   // return (
   //   <Route
   //     {...props}
