@@ -1,12 +1,20 @@
-//import Axios from 'axios';
+import Axios from 'axios';
 
-//const axios = Axios();
+const axios = Axios.create({
+  baseURL: 'https://backend-desafio-123.herokuapp.com/',
+});
 
-const auth = ({ email, password }) => {
-  if (email === 'admin@admin.com' && password === 'admin123') {
-    return { email };
+const auth = ({ username, password }) => {
+  if (username === 'admin' && password === 'admin123') {
+    return { username, password: '********' };
   }
   return;
 };
 
-export { auth };
+const getAllPessoasFisicas = async () => {
+  const data = await axios.get('/pf');
+  const pessoasFisicas = data.data;
+  return [...pessoasFisicas];
+};
+
+export { auth, getAllPessoasFisicas };

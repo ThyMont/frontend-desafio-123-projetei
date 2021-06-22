@@ -14,10 +14,7 @@ export default function Login() {
     }
   };
   const validations = yup.object().shape({
-    email: yup
-      .string()
-      .email('*Informe um email válido')
-      .required('*Email Obrigatório'),
+    username: yup.string().required('*Username Obrigatório'),
     password: yup
       .string()
       .min(6, '*A senha deve conter pelo menos 6 caracteres')
@@ -37,17 +34,17 @@ export default function Login() {
           <div className="mb-4 ">
             <label
               className="text-gray-200 block text-sm font-bold mb-2"
-              htmlFor="email"
+              htmlFor="username"
             >
               Email
             </label>
             <Field
-              name="email"
+              name="username"
               className="shadow-md bg-purple-500 hover:bg-purple-600 appearance-none border rounded w-full py-2 px-3 text-grey-darker"
             />
             <ErrorMessage
               component="span"
-              name="email"
+              name="username"
               className="text-yellow-300 font-semibold"
             ></ErrorMessage>
           </div>
