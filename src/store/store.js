@@ -1,11 +1,10 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import userReducer from './User/User.reducer';
-import loaderReducer from './Loader/Loader.reducer';
-import pessoaFisicaReducer from './PessoaFisica/PessoaFisica.reducer';
+import pessoaFisicaReducer from './PessoaFisica/PessoaFisica.Reducer';
 import storeSynchronize from 'redux-localstore';
+
 const rootReducer = combineReducers({
   user: userReducer,
-  loader: loaderReducer,
   pessoaFisica: pessoaFisicaReducer,
 });
 

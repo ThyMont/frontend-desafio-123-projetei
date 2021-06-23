@@ -1,5 +1,5 @@
 import { selectAllPessoasFisicas } from '../store/PessoaFisica/PessoaFisica.selects';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 //import { useState } from 'react';
 
 export default function Home() {
