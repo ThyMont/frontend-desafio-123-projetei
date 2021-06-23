@@ -2,7 +2,6 @@ import {
   AiOutlineEdit as EditIcon,
   AiOutlineDelete as DeleteIcon,
 } from 'react-icons/ai';
-// import { useSelector, useDispatch } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deletePessoaFisica } from '../store/PessoaFisica/PessoaFisicaCRUD';
 import { selectPessoaFisica } from '../store/SelectedPessoaFisica/SelectedPessoFisica.actions';
@@ -19,8 +18,6 @@ export default function Cards({
   const { cpf, name, phoneNumber } = pessoaFisica;
   const birthday = new Date(pessoaFisica.birthday);
   const dispatch = useDispatch();
-  // const pf = useSelector((state) => state.selectedPessoFisica);
-  // console.log(pf);
 
   function handleDeleteIconClick() {
     dispatch(selectPessoaFisica(pessoaFisica));
@@ -42,7 +39,6 @@ export default function Cards({
           <p>Telefone: {phoneNumber}</p>
         </div>
         <div className="flex space-x-2 text-gray-400 text-sm my-3">
-          {/* <!-- svg  --> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
