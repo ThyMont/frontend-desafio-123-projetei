@@ -14,7 +14,7 @@ export default function Cards({
     phoneNumber: '(21) 12345-6789',
     birthday: '2015/03/25',
   },
-  onEdit,
+  doEdit,
 }) {
   const { cpf, name, phoneNumber } = pessoaFisica;
   const birthday = new Date(pessoaFisica.birthday);
@@ -28,12 +28,11 @@ export default function Cards({
   }
 
   function handleEditIconClick() {
-    if (onEdit) {
-      onEdit(pessoaFisica);
-    }
+    dispatch(selectPessoaFisica(pessoaFisica));
+    doEdit();
   }
   return (
-    <div className="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl">
+    <div className="relative bg-white py-6 px-6 rounded-3xl w-64 h-60 my-4 shadow-xl">
       <div className=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
         {name}
       </div>

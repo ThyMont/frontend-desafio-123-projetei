@@ -5,18 +5,20 @@ import {
 } from '../PessoaFisica/PessoaFisica.actions';
 import * as api from '../../api';
 import {
+  createPessoaFisicaFailure,
+  createPessoaFisicaRequest,
+  createPessoaFisicaSuccess,
   deletePessoaFisicaFailure,
   deletePessoaFisicaRequest,
   deletePessoaFisicaSuccess,
 } from '../SelectedPessoaFisica/SelectedPessoFisica.actions';
 
 export async function fetchPessoasFisicas(dispatch, _getState) {
+  dispatch(fetchPessoasFisicasRequest());
   try {
-    dispatch(fetchPessoasFisicasRequest());
-
     const response = await api.getAllPessoasFisicas();
 
-    dispatch(fetchPessoasFisicasSuccess(response));
+    await dispatch(fetchPessoasFisicasSuccess(response));
   } catch (error) {
     dispatch(fetchPessoasFisicasFailure(error));
   }
@@ -31,5 +33,29 @@ export async function deletePessoaFisica(dispatch, getState) {
     dispatch(fetchPessoasFisicas);
   } catch (error) {
     dispatch(deletePessoaFisicaFailure(error));
+  }
+}
+
+export async function createPessoaFisica(dispatch, getState) {
+  const pf = getState().selectedPessoaFisica.data;
+  try {
+    dispatch(createPessoaFisicaRequest());
+    const response = await api.savePessoaFisica(pf);
+    dispatch(createPessoaFisicaSuccess(response));
+    dispatch(fetchPessoasFisicas);
+  } catch (error) {
+    dispatch(createPessoaFisicaFailure(error));
+  }
+}
+
+export async function updatePessoaFisica(dispatch, getState) {
+  const pf = getState().selectedPessoaFisica.data;
+  try {
+    dispatch(createPessoaFisicaRequest());
+    const response = await api.updatePessoaFisica(pf);
+    await dispatch(createPessoaFisicaSuccess(response));
+    dispatch(fetchPessoasFisicas);
+  } catch (error) {
+    dispatch(createPessoaFisicaFailure(error));
   }
 }

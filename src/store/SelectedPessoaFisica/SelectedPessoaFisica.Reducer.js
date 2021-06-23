@@ -19,6 +19,18 @@ export default function (state = initialState, action) {
       return initialState;
     case 'DELETE_PESSOA_FISICA_FAILURE':
       return { data: [], loading: false, error: action.payload };
+    case 'UPDATE_PESSOA_FISICA_REQUEST':
+      return { loading: true, data: state.data, error: '' };
+    case 'UPDATE_PESSOA_FISICA_SUCCESS':
+      return { loading: true, data: action.payload, error: '' };
+    case 'UPDATE_PESSOA_FISICA_FAILURE':
+      return { data: [], loading: false, error: action.payload };
+    case 'CREATE_PESSOA_FISICA_REQUEST':
+      return { loading: true, data: state.data, error: '' };
+    case 'CREATE_PESSOA_FISICA_SUCCESS':
+      return { loading: true, data: action.payload, error: '' };
+    case 'CREATE_PESSOA_FISICA_FAILURE':
+      return { data: [], loading: false, error: action.payload };
     default:
       return { ...state };
   }
