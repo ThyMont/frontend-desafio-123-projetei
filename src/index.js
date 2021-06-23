@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import store from './store/store';
+import { fetchTodos } from './store/store';
 import { Provider } from 'react-redux';
+
+store.dispatch(fetchTodos);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
