@@ -17,4 +17,10 @@ const getAllPessoasFisicas = async () => {
   return [...pessoasFisicas];
 };
 
-export { auth, getAllPessoasFisicas };
+const deletePessoaFisica = async (cpf) => {
+  const data = await axios.delete(`/pf/${cpf}`);
+  const res = data.data;
+  return res;
+};
+
+export { auth, getAllPessoasFisicas, deletePessoaFisica };
