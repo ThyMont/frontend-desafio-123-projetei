@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-  baseURL: 'https://backend-desafio-123.herokuapp.com/',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 const auth = ({ username, password }) => {
