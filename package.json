@@ -26,22 +26,19 @@
     "redux-promise-middleware": "6.1.2",
     "redux-thunk": "2.3.0",
     "uuid": "8.3.2",
-    "yup": "0.32.9"
-  },
-  "devDependencies": {
+    "yup": "0.32.9",
     "@tailwindcss/postcss7-compat": "2.0.4",
-    "autoprefixer": "9",
-    "postcss": "7",
-    "serve": "11.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
+  "devDependencies": {
+    "autoprefixer": "9",
+    "postcss": "7",
+    "serve": "11.3.2"
+  },
   "scripts": {
-    "dev": "craco start",
-    "build": "craco build",
-    "prod:local": "craco build && serve -s build",
-    "prod:cloud": "craco build && netlify deploy --prod --open --dir build",
-    "prod:cloud:test": "craco build && netlify deploy --open --dir build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
